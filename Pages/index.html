@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html data-ng-app="main-App">
+<head>
+    <title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="body" data-ng-controller="indexController">
+    <style>
+        .navbar-right {
+    color: #fff;
+    margin-top:15px;
+}
+.content-wrapper {
+    margin: -21px 12px;
+    color: #fff;
+    max-width: 100%;
+}
+        .content-wrapper > .right-text {
+            margin: 0 20px;
+            padding-top:10px;
+        }
+.panel-heading {
+    padding: 0px !important;
+}
+.panel-heading a{
+    display: block;
+    padding: 10px 15px;
+}
+.panel-heading a:hover{
+    text-decoration: none !important;
+}
+ </style>
+<nav class="navbar navbar-default">
+    <header class="clearfix navbar-inverse">
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">
+                    <a href="~/">LOGO</a></p>
+            </div>
+            <div class="pull-right right-text">
+                Willkommen Houssem Hariz, {{Date}}
+            </div>
+        </div>
+    </header>
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Run <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Run in new Web</a></li>
+        <li><a href="#">Export</a></li>
+         </ul>
+    </div>
+     
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <section class="clearfix">
+        <div class="col-sm-2">
+       <!--     <ul class="nav navbar" id="accordion">
+                <li ui-draggable="true" drag="item"><a href="#">
+                   	<a href="#">item1</a>
+                		<ul>
+                			<li data-ng-repeat="item in list2" ui-draggable="true" drag="item"><a href="#">
+                    			{{item.title}}
+                    		</a></li>
+                    	</ul>
+                </li>
+                <li ui-draggable="true" drag="item"><a href="#">
+                   	<a href="#">item2</a>
+                		<ul>
+                			<li data-ng-repeat="item in list2" ui-draggable="true" drag="item"><a href="#">
+                    			{{item.title}}
+                    		</a></li>
+                    	</ul>
+                </li>
+            </ul>
+        -->
+
+            
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default" data-ng-repeat="m in menu">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#{{m.divid}}" data-parent="#accordion" >{{m.title}}</a>
+                </h4>
+            </div>
+            <div id="{{m.divid}}" class="panel-collapse collapse in" >
+                <div class="panel-body">
+                    <li data-ng-repeat="mn in m.list" ui-draggable="true" drag="mn"><a href="#">
+                    			{{mn.title}}
+                        </a></li>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+
+
+            </div>
+ <div id="chart"></div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div id="qaud1" class="col-sm-6" style="height: 250px;" data-ui-on-Drop="onDrop($event,$data,quad2)">
+                    <div data-ng-repeat="item in quad2 track by $index" ng-if ="item">
+                        <img data-ng-src="{{item.imagePath}}" style="height: 250px;width: 425px;"/>{{item.title}}
+                    </div>
+                </div>
+                <div id="qaud2" class="col-sm-6" style="height: 250px;" data-ui-on-Drop="onDrop($event,$data,quad1)">
+                    <div data-ng-repeat="item in quad1 track by $index" ng-if ="item">
+ 			<img data-ng-src="{{item.imagePath}}" style="height: 250px;width: 425px;"/>{{item.title}}
+   			</div>  
+
+			</div>
+            </div>
+           
+            <div class="row">
+                <div id="qaud3" class="col-sm-6" style="height: 250px;" data-ui-on-Drop="onDrop($event,$data,quad3)">
+                    <div data-ng-repeat="item in quad3 track by $index" ng-if ="item">
+                        <img data-ng-src="{{item.imagePath}}" style="height: 250px;width: 425px;"/>{{item.title}}
+                    </div>
+                </div>
+                <div id="qaud4"class="col-sm-6" style="height: 250px;" data-ui-on-Drop="onDrop($event,$data,quad4)">
+                    <div data-ng-repeat="item in quad4 track by $index" ng-if ="item">
+ 			<img data-ng-src="{{item.imagePath}}" style="height: 250px;width: 425px;"/>{{item.title}}
+                         </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+    <script src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script src="../Scripts/jquery-ui-1.8.24.min.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/c3.js"></script>
+    <script src="../Scripts/d3.v3.min.js"></script>
+    <script src="../Scripts/c3js-directive.js"></script>
+
+    <link href="../CSS/jquery-ui.min.css" rel="stylesheet" />
+    <link href="../CSS/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="indexController.js"></script>
+    <script src="../Scripts/draganddrop.js"></script>
+
+</body>
+</html>
